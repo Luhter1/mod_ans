@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Шпаргалки — Моделирование</title>
+  <style>
+    :root{--bg:#f7f9fc;--card:#ffffff;--accent:#0b5cff;--text:#111}
+    body{font-family:Inter, Roboto, Arial, sans-serif;line-height:1.4;background:var(--bg);color:var(--text);margin:0;padding:24px}
+    .wrap{max-width:980px;margin:0 auto}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:4px 0 0;color:#444}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+    .card{background:var(--card);border-radius:10px;padding:14px;box-shadow:0 6px 18px rgba(15,25,40,0.06)}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:8px 10px;border-bottom:1px solid #eef2f7;text-align:left;vertical-align:top}
+    th{background:#fafcff;font-weight:600}
+    caption{caption-side:top;text-align:left;font-weight:700;padding-bottom:8px}
+    .meta{font-size:13px;color:#666}
+    footer{margin-top:18px;text-align:right;color:#666;font-size:13px}
+    @media print{
+      body{padding:10px;color:#000;background:#fff}
+      .card{box-shadow:none;border-radius:0}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Шпаргалки — Моделирование</h1>
+        <p class="lead">Краткие таблицы по трём темам: общие вопросы моделирования, теория вероятностей, марковские процессы</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <table>
+          <caption>1. Общие вопросы моделирования</caption>
+          <thead>
+            <tr><th>Понятие</th><th>Определение / Ключевая идея</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Моделирование</td><td>Метод исследования объектов путём построения и изучения их моделей.</td></tr>
+            <tr><td>Система</td><td>Совокупность взаимосвязанных элементов, действующих для достижения цели.</td></tr>
+            <tr><td>Структура системы</td><td>Состав элементов и связи между ними.</td></tr>
+            <tr><td>Функция системы</td><td>Назначение, выполняемая задача системы.</td></tr>
+            <tr><td>Параметры системы</td><td>Величины, описывающие свойства и состояния системы.</td></tr>
+            <tr><td>Эмерджентность</td><td>Свойства системы, не присущие её отдельным элементам.</td></tr>
+            <tr><td>Эффективность</td><td>Степень соответствия системы своему назначению.</td></tr>
+            <tr><td>Критерий эффективности</td><td>Величина, увеличивающаяся (или уменьшающаяся) при росте эффективности.</td></tr>
+            <tr><td>Адекватность модели</td><td>Степень соответствия модели реальному объекту.</td></tr>
+            <tr><td>Универсальный метод</td><td>Имитационное моделирование.</td></tr>
+            <tr><td>Режимы работы</td><td>Стационарный (не зависит от времени), неустановившийся (переходный), перегрузочный.</td></tr>
+            <tr><td>Требования к модели</td><td>Адекватность, точность, простота, устойчивость, воспроизводимость.</td></tr>
+            <tr><td>Виды моделей</td><td>Материальная, концептуальная, математическая, имитационная.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <table>
+          <caption>2. Элементы теории вероятностей</caption>
+          <thead>
+            <tr><th>Величина / Закон</th><th>Формула / Характеристика</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Матем. ожидание</td><td>Дискретн.: <code>E[X]=\sum x_i p_i</code>. Непрерывн.: <code>E[X]=\int x f(x)dx</code>.</td></tr>
+            <tr><td>Дисперсия</td><td><code>D[X]=E[X^2]-(E[X])^2</code>.</td></tr>
+            <tr><td>СКО (σ)</td><td><code>σ=\sqrt{D[X]}</code>.</td></tr>
+            <tr><td>Коэф. вариации</td><td><code>v=σ/E[X]</code>.</td></tr>
+            <tr><td>F(x)</td><td><code>F(x)=P(X ≤ x)=\int_{-∞}^{x} f(t)dt</code>. Неубывающая, ∈[0,1].</td></tr>
+            <tr><td>f(x)</td><td>Плотность: производная F(x), интеграл по всей оси = 1.</td></tr>
+            <tr><td>Равномерное</td><td><code>f(x)=1/(b−a)</code>; <code>E[X]=(a+b)/2</code>; <code>D[X]=(b−a)^2/12</code>.</td></tr>
+            <tr><td>Пуассона</td><td><code>P(X=k)=λ^k e^{-λ}/k!</code>.</td></tr>
+            <tr><td>Экспоненциальное</td><td><code>f(x)=λ e^{-λ x}</code>; <code>E[X]=1/λ</code>; <code>D[X]=1/λ^2</code>; <code>v=1</code>.</td></tr>
+            <tr><td>Эрланг (n)</td><td>Сумма n экспоненциальных; <code>E[X]=n/λ</code>; <code>D[X]=n/λ^2</code>; <code>v=1/√n</code>.</td></tr>
+            <tr><td>Геометрическое</td><td><code>P(X=k)=p(1−p)^{k−1}</code>.</td></tr>
+            <tr><td>Предел Эрланга</td><td>При n→∞ — стремится к нормальному распределению.</td></tr>
+            <tr><td>Детерминированная СВ</td><td><code>D[X]=0</code>, <code>σ=0</code>.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <table>
+          <caption>3. Марковские процессы и СМО</caption>
+          <thead>
+            <tr><th>Понятие</th><th>Определение / Формула</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Марковский процесс</td><td>Будущее зависит только от настоящего состояния: <code>P(X_{n+1}|X_n,...)=P(X_{n+1}|X_n)</code>.</td></tr>
+            <tr><td>Дискретное / непрерывное время</td><td>Дискретное — фиксированные шаги; непрерывное — случайные интервалы (экспоненциальные).</td></tr>
+            <tr><td>Матрица переходов P</td><td>Элементы <code>P_{ij}</code> — вероятности перехода i→j; сумма строки = 1.</td></tr>
+            <tr><td>Матрица интенсивностей Q</td><td>Для непрерывного времени: <code>Q_{ij} ≥0 (i≠j)</code>, <code>Q_{ii} = -Σ_{j≠i} Q_{ij}</code>.</td></tr>
+            <tr><td>Однородность</td><td>Интенсивности не зависят от времени.</td></tr>
+            <tr><td>Эргодичность</td><td>Нет поглощающих состояний; из любого состояния достижимо любое другое; существуют предельные вероятности.</td></tr>
+            <tr><td>Интенсивность λ</td><td>Параметр экспоненциального распределения интервалов переходов.</td></tr>
+            <tr><td>Нормировочное условие</td><td>Сумма вероятностей состояний = 1.</td></tr>
+            <tr><td>СМО (Кендалл)</td><td>Обозначение A/B/C/K; M — экспоненциальный поток/обслуживание.</td></tr>
+            <tr><td>Коэф. загрузки</td><td><code>ρ=λ/μ</code>.</td></tr>
+            <tr><td>Коэф. простоя</td><td><code>1−ρ</code> (при одном канале и бесконечной очереди простота = 1−ρ).</td></tr>
+            <tr><td>M/M/1 / M/M/1/2</td><td>M/M/1 — один канал, экспон. потоки; M/M/1/2 — вместимость 2 (ограниченная очередь).</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <footer>Готово — HTML-файл содержит компактные шпаргалки для подготовки к тесту.</footer>
+  </div>
+</body>
+</html>
